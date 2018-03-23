@@ -28,3 +28,21 @@
     - name: httpd
     - name: mysqld
 
+- name: Create mysql-user for wordpress
+  mysql_user:
+    name: '{{ mysql_user.name }}'
+    password: '{{ mysql_user.password }}'
+    state: present
+
+- name: Create database for wordpress
+  mysql_db:
+    name: '{{ mysql_db.db_name }}'
+    state: present
+
+- name: Appentd-privs wordpress-user
+  mysql_user:
+    name: '{{ mysql_user.name }}'
+    append_privs: true
+    priv: '{{ mysql_db.db_name }}.*:ALL,GRANT'
+    state: present
+

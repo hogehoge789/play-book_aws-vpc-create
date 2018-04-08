@@ -16,7 +16,7 @@
     state: present
   register: vpc_igw
 
-- name: Create Subnet
+- name: Create Subnet01
   ec2_vpc_subnet:
     region: "{{ aws.common.region }}"
     state: present
@@ -25,7 +25,19 @@
     cidr: "{{ item.value.cidr }}"
     map_public: "{{ item.value.map_public|default(True) }}"
     tags: "{{ item.value.tags }}"
-  with_dict: "{{ aws.vpc.subnet }}"
+  with_dict: "{{ aws.vpc.subnet01 }}"
+  register: vpc_subnet
+
+- name: Create Subnet02
+  ec2_vpc_subnet:
+    region: "{{ aws.common.region }}"
+    state: present
+    vpc_id: "{{ vpc_net.vpc.id }}"
+    az: "{{ aws.common.region }}{{ item.value.zone }}"
+    cidr: "{{ item.value.cidr }}"
+    map_public: "{{ item.value.map_public|default(True) }}"
+    tags: "{{ item.value.tags }}"
+  with_dict: "{{ aws.vpc.subnet02 }}"
   register: vpc_subnet
 
 - name: Create RouteTable
@@ -40,6 +52,3 @@
       - dest: "{{ vpc_net.vpc.cidr_block }}"
         gateway_id: local
     register: route_table
-
-
-

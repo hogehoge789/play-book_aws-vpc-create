@@ -1,4 +1,4 @@
 ---
 my_vars:
   ec2:
-    key_name:
+    key_name: XXX

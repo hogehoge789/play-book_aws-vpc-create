@@ -10,12 +10,18 @@ aws:
     igw:
       tags:
         Name: AnsibleIGW
-    subnet:
+    subnet01:
       subnet1:
         tags:
           Neme: public-a
         cidr: 10.0.1.0/24
         zone: a
+    subnet02:
+      subnet2:
+        tags:
+          Neme: public-c
+        cidr: 10.0.10.0/24
+        zone: c
     route_table:
       tags:
         Name: public-route-table
@@ -34,6 +40,6 @@ aws:
       cidr_ip: 0.0.0.0/0
 
     ec2:
-      name: WordPress
+      name: AMZ-lin2
       instance_type: t2.micro
-      image: ami-2a69be4c
+      image: ami-c2680fa4

@@ -10,18 +10,12 @@ aws:
     igw:
       tags:
         Name: AnsibleIGW
-    subnet01:
+    subnet:
       subnet1:
         tags:
           Neme: public-a
         cidr: 10.0.1.0/24
         zone: a
-    subnet02:
-      subnet2:
-        tags:
-          Neme: public-c
-        cidr: 10.0.10.0/24
-        zone: c
     route_table:
       tags:
         Name: public-route-table
@@ -38,8 +32,3 @@ aws:
         - 80
         - 443
       cidr_ip: 0.0.0.0/0
-
-    ec2:
-      name: AMZ-lin2
-      instance_type: t2.micro
-      image: ami-c2680fa4

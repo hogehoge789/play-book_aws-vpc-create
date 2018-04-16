@@ -7,3 +7,35 @@ aws:
     cidr_block: 10.10.0.0/16
     tags:
       Name: AnsibleVPC
+    igw:
+      tags:
+        Name: AnsibleIGW
+    subnet:
+      subnet01:
+        tags:
+          Name: public-a
+        cidr: 10.10.1.0/24
+        zone: a
+      subnet02:
+        tags:
+          Name: public-c
+        cidr: 10.10.10.0/24
+        zone: c
+    route_table:
+      tags:
+        Name: public-route-table
+    security_group:
+      name: AnsibleWeb
+      description: EC2 Group
+      rules:
+        - proto: tcp
+          ports:
+            - 22
+          cidr_ip: 0.0.0.0/0
+        - proto: tcp
+          ports:
+            - 80
+            - 443
+          cidr_ip: 0.0.0.0/0
+
+

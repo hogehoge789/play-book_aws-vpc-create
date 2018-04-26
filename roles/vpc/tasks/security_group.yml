@@ -1,11 +1,12 @@
 ---
-- name: vpc_id get
+
+- name: get vpc_id
   ec2_vpc_net_facts:
     region: "{{ aws.common.region }}"
     filters:
       "tag:Name": "{{ aws.vpc.name }}"
-#   register: vpc_net_fact
-    check_mode: no
+  register: vpc_net_fact
+  check_mode: no
 
 - name: create security group
   ec2_group:

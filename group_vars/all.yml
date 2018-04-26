@@ -37,5 +37,10 @@ aws:
             - 80
             - 443
           cidr_ip: 0.0.0.0/0
+    ec2:
+      name: amz-lin02-01
+      instance_type: t2.micro
+      image: ami-c2680fa4
 
+#    elb:
 

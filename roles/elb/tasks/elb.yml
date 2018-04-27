@@ -1,0 +1,14 @@
+---
+- name: get subnet
+  ec2_vpc_subnet_facts:
+    region: "{{ aws.common.region }}"
+    filters:
+      "tag:Name": "{{ aws.vpc.subnet.subnet01.tags.Name }}"
+  register: ec2_subnet_facts
+  check_mode: no
+
+- name: Create ELB
+  ec2_elb_lb:
+    name: "{{ aws.elb.name }}"
+    state: present
+    region: "{{ aws.common.region }}"

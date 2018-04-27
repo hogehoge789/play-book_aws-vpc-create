@@ -10,7 +10,7 @@ aws:
     igw:
       tags:
         Name: AnsibleIGW
-    subnet:
+    pubsubnet:
       subnet01:
         tags:
           Name: public-a
@@ -20,6 +20,17 @@ aws:
         tags:
           Name: public-c
         cidr: 10.10.10.0/24
+        zone: c
+    prisubnet:
+      subnet01:
+        tags:
+          Name: public-a
+        cidr: 10.10.2.0/24
+        zone: a
+      subnet02:
+        tags:
+          Name: public-c
+        cidr: 10.10.20.0/24
         zone: c
     route_table:
       tags:
@@ -37,10 +48,11 @@ aws:
             - 80
             - 443
           cidr_ip: 0.0.0.0/0
-    ec2:
-      name: amz-lin02-01
-      instance_type: t2.micro
-      image: ami-c2680fa4
+  ec2:
+    name: amz-lin02-01
+    instance_type: t2.micro
+    image: ami-c2680fa4
+  elb:
+    name: alb-lb
 
-#    elb:
 

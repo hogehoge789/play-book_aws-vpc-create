@@ -24,12 +24,12 @@ aws:
     prisubnet:
       subnet01:
         tags:
-          Name: public-a
+          Name: private-a
         cidr: 10.10.2.0/24
         zone: a
       subnet02:
         tags:
-          Name: public-c
+          Name: private-c
         cidr: 10.10.20.0/24
         zone: c
     route_table:

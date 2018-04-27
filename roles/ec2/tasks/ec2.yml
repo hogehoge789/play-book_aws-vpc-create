@@ -11,7 +11,7 @@
   ec2_vpc_subnet_facts:
     region: "{{ aws.common.region }}"
     filters:
-      "tag:Name": "{{ aws.vpc.subnet.subnet01.tags.Name }}"
+      "tag:Name": "{{ aws.vpc.pubsubnet.subnet01.tags.Name }}"
   register: ec2_subnet_facts
   check_mode: no
 

@@ -12,3 +12,5 @@
     name: "{{ aws.elb.name }}"
     state: present
     region: "{{ aws.common.region }}"
+    subnets: "{{ ec2_subnet_facts.subnets[0].id }}","{{ ec2_subnet_facts.subnets[1].id }}"
+    listeners: "{{ aws.elb.listeners }}"

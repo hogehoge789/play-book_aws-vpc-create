@@ -54,5 +54,7 @@ aws:
     image: ami-c2680fa4
   elb:
     name: alb-lb
-
-
+    listeners:
+      - proto: http
+        lb_ports: 80
+        ec2_ports: 80

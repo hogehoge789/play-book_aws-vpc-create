@@ -6,4 +6,3 @@
   roles:
     - vpc
     - ec2
-    - elb

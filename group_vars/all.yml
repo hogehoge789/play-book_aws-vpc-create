@@ -50,8 +50,8 @@ aws:
           cidr_ip: 0.0.0.0/0
   ec2:
     name: amz-lin02-01
-    instance_type: t2.micro
-    image: ami-c2680fa4
+    instance_type: c5.large
+    image: ami-8fbab2f3
   elb:
     name: alb-lb
     listeners:

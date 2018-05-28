@@ -51,7 +51,7 @@ aws:
   ec2:
     name: amz-lin02-01
     instance_type: t2.micro
-    image: ami-8fbab2f3
+    image: ami-2724cf58
     role: web
   elb:
     name: alb-lb

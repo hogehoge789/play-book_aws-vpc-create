@@ -6,3 +6,13 @@
   roles:
     - vpc
     - ec2
+  tasks:
+    - name: Refresh inventory
+      meta: refresh_inventory
+
+- name: Nginx Instale
+  hosts: tag_Role_web
+  become: true
+  gather_facts: False
+  roles:
+    - nginx

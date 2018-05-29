@@ -28,7 +28,7 @@
     wait_timeout: 300
     count_tag:
       Name: "{{ aws.ec2.name }}"
-    exact_count: 1
+    exact_count: 2
     instance_tags:
       Name: "{{ aws.ec2.name }}"
       Role: "{{ aws.ec2.role }}"

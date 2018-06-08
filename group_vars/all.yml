@@ -51,7 +51,7 @@ aws:
   ec2:
     name: cent-01
     instance_type: t2.micro
-    image: ami-4af5022c
+    image: ami-2724cf58
     role: cent-web
 
   elb:

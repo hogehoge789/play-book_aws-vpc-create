@@ -7,19 +7,34 @@
   register: ec2_group_facts
   check_mode: no
 
-- name: get subnet
+- name: display security group debug
+  debug: var=ec2_group_facts
+
+- name: get subnet01
   ec2_vpc_subnet_facts:
     region: "{{ aws.common.region }}"
     filters:
       "tag:Name": "{{ aws.vpc.pubsubnet.subnet01.tags.Name }}"
-  register: ec2_subnet_facts
+  register: ec2_public_subnet01_facts
   check_mode: no
+
+- name: display subnet debug
+  debug: var=ec2_public_subnet01_facts
+
+- name: get subnet02
+  ec2_vpc_subnet_facts:
+    region: "{{ aws.common.region }}"
+  register: ec2_public_subnet02_facts
+  check_mode: no
+
+- name: display subnet debug
+  debug: var=ec2_public_subnet02_facts
 
 - name: Provision a set of instance
   ec2:
     key_name: "{{ my_vars.ec2.key_name }}"
     group_id: "{{ ec2_group_facts.security_groups[0].group_id }}"
-    vpc_subnet_id: "{{ ec2_subnet_facts.subnets[0].id }}"
+    vpc_subnet_id: "{{ ec2_public_subnet01_facts.subnets[0].id }}"
     assign_public_ip: yes
     instance_type: "{{ aws.ec2.instance_type }}"
     region: "{{ aws.common.region }}"
@@ -33,6 +48,9 @@
       Name: "{{ aws.ec2.name }}"
       Role: "{{ aws.ec2.role }}"
   register: ec2
+
+- name: display ec2 debug
+  debug: var=ec2
 
 - name: wait for ssh 
   wait_for:

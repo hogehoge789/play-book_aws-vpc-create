@@ -24,6 +24,8 @@
 - name: get subnet02
   ec2_vpc_subnet_facts:
     region: "{{ aws.common.region }}"
+    filters:
+      "tag:Name": "{{ aws.vpc.pubsubnet }}"
   register: ec2_public_subnet02_facts
   check_mode: no
 

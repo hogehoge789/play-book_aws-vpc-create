@@ -49,10 +49,11 @@ aws:
             - 443
           cidr_ip: 0.0.0.0/0
   ec2:
-    name: cent-01
+    name: cent-
     instance_type: t2.micro
     image: ami-3185744e
     role: cent-web
+    instance_count: 2
 
   elb:
     name: alb-lb

@@ -23,6 +23,8 @@
   register: ec2_public_subnet02_facts
   check_mode: no
 
+- debug: var=ec2_public_subnet01_facts
+
 - name: Provision a set of instance
   ec2:
     key_name: "{{ my_vars.ec2.key_name }}"

@@ -6,13 +6,8 @@
   roles:
     - vpc
     - ec2
+#    - elb
   tasks:
     - name: Refresh inventory
       meta: refresh_inventory
 
-#- name: Nginx Instale
-#  hosts: tag_role_cent-web
-#  become: true
-#  gather_facts: False
-#  roles:
-#    - nginx

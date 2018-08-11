@@ -21,8 +21,8 @@
     state: present
     region: "{{ aws.common.region }}"
     subnets:
-      - xxx
-      - xxx
+      - "{{ elb_subnet01_facts.subnets.id }}"
+      - "{{ elb_subnet02_facts.subnets.id }}"
     listeners:
       - protocol: http
         load_balancer_port: 80

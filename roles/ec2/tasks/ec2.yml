@@ -23,7 +23,9 @@
   register: ec2_public_subnet02_facts
   check_mode: no
 
-- debug: var=ec2_public_subnet01_facts
+- name: Get the ubuntu trusty AMI
+  ec2_ami_search: distro=ubuntu release=trusty region=ap-northeast-1 virt=hvm
+  register: ubuntu_image
 
 - name: Provision a set of instance
   ec2:
@@ -33,7 +35,7 @@
     assign_public_ip: yes
     instance_type: "{{ aws.ec2.instance_type }}"
     region: "{{ aws.common.region }}"
-    image: "{{ aws.ec2.image }}"
+    image: "{{ ubuntu_image.ami }}"
     wait: yes
     wait_timeout: 300
     count_tag:

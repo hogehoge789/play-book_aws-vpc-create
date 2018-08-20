@@ -49,10 +49,9 @@ aws:
             - 443
           cidr_ip: 0.0.0.0/0
   ec2:
-    name: cent-
+    name: ubuntu-
     instance_type: t2.micro
-    image: ami-8e8847f1
-    role: cent-web
+    role: ubuntu-web
     instance_count: 3
 
   elb:
